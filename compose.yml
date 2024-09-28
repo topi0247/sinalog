@@ -1,0 +1,46 @@
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      TZ: Asia/Tokyo
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgresql_data:/var/lib/postgresql
+    ports:
+      - 5432:5432
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d myapp_development -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  back:
+    build:
+      context: ./back/
+      dockerfile: Dockerfile.dev
+    command: bash -c "bundle install && bundle exec rails db:prepare && rm -f tmp/pids/server.pid"
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./back:/app
+    environment:
+      TZ: Asia/Tokyo
+    ports:
+      - "3000:3000"
+    user: "1000:1000"
+    depends_on:
+      db:
+        condition: service_healthy
+  front:
+    build:
+      context: ./front/
+      dockerfile: Dockerfile
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./front:/app
+    command: bash -c "yarn install && yarn dev -p 8000"
+    ports:
+      - "8000:8000"
+volumes:
+  postgresql_data:
