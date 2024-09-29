@@ -1,6 +1,9 @@
-import type { Metadata } from "next";
+import "@mantine/core/styles.css";
 import "./globals.css";
+import { ColorSchemeScript } from "@mantine/core";
+import type { Metadata } from "next";
 import { ReactNode } from "react";
+
 import AppProvider from "@/providers";
 
 export const metadata: Metadata = {
@@ -15,6 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
+      <head>
+        <ColorSchemeScript />
+      </head>
       <body>
         <AppProvider>{children}</AppProvider>
       </body>
