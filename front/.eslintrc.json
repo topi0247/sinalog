@@ -7,7 +7,10 @@
     "eslint:recommended",
     "plugin:tailwindcss/recommended"
   ],
-  "plugins": ["import", "unused-imports"],
+  "plugins": [
+    "import",
+    "unused-imports"
+  ],
   "rules": {
     "unused-imports/no-unused-imports": "error",
     "import/order": [
@@ -15,15 +18,45 @@
       {
         "alphabetize": {
           "order": "asc"
-        }
+        },
+        "newlines-between": "always",
+        "groups": [
+          [
+            "builtin",
+            "external"
+          ],
+          [
+            "internal",
+            "parent",
+            "sibling",
+            "index"
+          ]
+        ],
+        "pathGroupsExcludedImportTypes": [
+          "builtin"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "@/**",
+            "group": "internal"
+          }
+        ]
       }
     ]
   },
   "settings": {
     "import/resolver": {
       "alias": {
-        "map": [["@", "./src"]],
-        "extensions": [".ts", ".tsx"]
+        "map": [
+          [
+            "@",
+            "./src"
+          ]
+        ],
+        "extensions": [
+          ".ts",
+          ".tsx"
+        ]
       }
     }
   }
