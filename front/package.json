@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint --dir src",
     "format": "prettier --write --ignore-path .gitignore './**/*.{ts,tsx,json}'",
-    "fix:lint": "next lint --fix"
+    "lint:fix": "next lint --fix --dir src"
   },
   "dependencies": {
     "@mantine/core": "^7.13.0",
@@ -29,8 +29,8 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "eslint": "^9.11.1",
-    "eslint-config-next": "14.2.13",
+    "eslint": "^8",
+    "eslint-config-next": "^13",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.30.0",
