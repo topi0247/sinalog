@@ -12,7 +12,6 @@
   "requirePragma": false,
   "insertPragma": false,
   "htmlWhitespaceSensitivity": "css",
-  "vueIndentScriptAndStyle": false,
   "endOfLine": "lf",
   "embeddedLanguageFormatting": "auto",
   "singleAttributePerLine": false
